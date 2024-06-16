@@ -9,7 +9,6 @@ import '../../helpers/dummy_data/json_reader.dart';
 void main() {
   const testProductModel = ProductModel(
     id: '1',
-    localId: '1',
     name: 'Teste',
     description: 'teste',
     group: 'teste',
@@ -36,7 +35,6 @@ void main() {
 
     final expectedJson = {
       "id": "1",
-      "localId": "1",
       "name": "Teste",
       "description": "teste",
       "group": "teste",

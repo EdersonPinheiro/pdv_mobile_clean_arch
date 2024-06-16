@@ -31,7 +31,7 @@ class MovementModel extends MovementEntity {
         "localId": localId,
         "typeMov": typeMov,
         'userMov': userMov,
-        'products': products,
+        'products': products.map((product) => product.toJson()).toList(),
         'type': type
       };
 }

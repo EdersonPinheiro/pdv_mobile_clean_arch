@@ -12,7 +12,6 @@ void main() {
   final List<ProductModel> productList = [
     const ProductModel(
       id: '1',
-      localId: '1',
       name: 'Teste',
       description: 'teste',
       group: 'teste',
@@ -35,10 +34,36 @@ void main() {
   });
 
   test('should be a valid model from json', () async {
-    final Map<String, dynamic> jsonMap = json.decode(readJson('helpers/dummy_data/dummy_movement_response.json'));
+    final Map<String, dynamic> jsonMap = json
+        .decode(readJson('helpers/dummy_data/dummy_movement_response.json'));
 
     final result = MovementModel.fromJson(jsonMap);
 
     expect(result, equals(testMovementModel));
+  });
+
+  test('should return a valid model to json', () async {
+    final result = testMovementModel.toJson();
+
+    final expectingJsonMap = {
+      "id": "1",
+      "localId": "1",
+      "typeMov": "Pix",
+      "userMov": "userMov",
+      "products": [
+        {
+          "id": "1",
+          "name": "Teste",
+          "description": "teste",
+          "group": "teste",
+          "setor": "teste",
+          "price": 2.0,
+          "quantity": 2
+        }
+      ],
+      "type": true
+    };
+
+    expect(result, equals(expectingJsonMap));
   });
 }
